@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #050505, #000022);
+    animation: space 15s ease infinite;
+}
+
+@keyframes space {
+    from {background-position: 0 0;}
+    to {background-position: -400px 0;}
+}
+
+.stars, .twinkling, .clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.stars {
+    background: url("../img/starfield.png") repeat top center;
+    z-index: 0;
+}
+
+.twinkling{
+    background: transparent url("../img/twinkling.png") repeat top center;
+    z-index: 1;
+    animation: move-twink-back 200s linear infinite;
+}
+
+.clouds {
+    background: transparent url("../img/clouds.png") repeat top center;
+    z-index: 2;
+    animation: move-clouds 300s linear infinite;
+}
+
+@keyframes move-twink-back {
+    from { background-position: 0 0; }
+    to { background-position: -10000px 5000px; }
+}
+
+@keyframes move-clouds {
+    from { background-position: 0 0; }
+    to { background-position: 10000px 0; }
+}
+
+main {
+    text-align: center;
+    position: relative;
+    z-index: 3;
+    color: white;
+    padding-top: 25vh;
+}
+
+main h1 {
+    font-size: 48px;
+    text-shadow: 0 0 20px #fffa, 0 0 30px #ffff66, 0 0 40px #ff6600, 0 0 50px #ff0000, 0 0 60px #ff00ff, 0 0 70px #ff00ff, 0 0 80px #ff6600;
+}
+
+form {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 50px;
+    max-width: 320px; /* Ограничиваем ширину формы */
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+input {
+    box-sizing: border-box; /* Включаем учет границ и паддингов в общую ширину */
+    width: 100%; /* Полям вводам задаем 100% ширины относительно родителя */
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #005aa5;
+}
+
+/* Оптимизированная анимация */
+@keyframes move-twink-back {
+    0%, 100% { background-position: 0 0; }
+    33% { background-position: -2500px 1250px; }
+    66% { background-position: -5000px 2500px; }
+}
+
+@keyframes move-clouds {
+    0%, 100% { background-position: 0 0; }
+    50% { background-position: 5000px 0; }
+}
+
+/* Улучшенный контраст и размер текста */
+label, input, button {
+    font-size: 16px; /* Увеличенный шрифт */
+    color: #fff; /* Белый текст для лучшего контраста */
+}
+
+/* Медиа-запросы для мобильных устройств */
+@media screen and (max-width: 768px) {
+    main {
+        padding-top: 15vh; /* Уменьшить отступ сверху */
+    }
+
+    form {
+        max-width: 90%; /* Сделать форму шире на малых экранах */
+    }
+}

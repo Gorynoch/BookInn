@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="clouds"></div>
+    <main>
+        <h1>Регистрация</h1>
+        <form id="registrationForm">
+            <label for="fullName">ФИО:</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Введите ваши ФИО" required>
+
+            <label for="country">Страна:</label>
+            <input type="text" id="country" name="country" placeholder="Введите вашу страну" required>
+
+            <label for="city">Город:</label>
+            <input type="text" id="city" name="city" placeholder="Введите ваш город" required>
+
+            <label for="birthday">День рождения:</label>
+            <input type="date" id="birthday" name="birthday" required>
+
+            <p>Выберите язык:</p>
+            <select id="language" name="language">
+                <option value="ru">Русский</option>
+                <option value="en">Английский</option>
+                <option value="hi">Хинди</option>
+                <option value="es">Испанский</option>
+                <option value="pl">Польский</option>
+                <option value="pt">Португальский</option>
+            </select>
+
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+    </main>
+    <script src="js/script.js"></script>
+</body>
+</html>
