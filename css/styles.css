@@ -1,14 +1,16 @@
+/* Космосстиль */
 body {
     font-family: Arial, sans-serif;
     height: 100vh;
     overflow: hidden;
     background: linear-gradient(to bottom, #050505, #000022);
     animation: space 15s ease infinite;
+    color: #fff; /* Белый текст на темном фоне */
 }
 
 @keyframes space {
     from {background-position: 0 0;}
-    to {background-position: -400px 0;}
+    to {background-position: -800px 0;} /* Уменьшили сдвиг для более плавного эффекта */
 }
 
 .stars, .twinkling, .clouds {
@@ -41,19 +43,18 @@ body {
 
 @keyframes move-twink-back {
     from { background-position: 0 0; }
-    to { background-position: -10000px 5000px; }
+    to { background-position: -6000px 3000px; } /* Аналогично уменьшен сдвиг */
 }
 
 @keyframes move-clouds {
     from { background-position: 0 0; }
-    to { background-position: 10000px 0; }
+    to { background-position: 4000px 0; } /* Сдвиг для облаков тоже уменьшен */
 }
 
 main {
     text-align: center;
     position: relative;
     z-index: 3;
-    color: white;
     padding-top: 25vh;
 }
 
@@ -64,12 +65,12 @@ main h1 {
 
 form {
     display: inline-block;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.1); /* Немного увеличим прозрачность фона формы */
     backdrop-filter: blur(10px);
     border-radius: 10px;
     padding: 20px;
     margin-top: 50px;
-    max-width: 320px; /* Ограничиваем ширину формы */
+    max-width: 480px; /* Увеличенная максимальная ширина для больших экранов */
 }
 
 label {
@@ -89,6 +90,11 @@ input {
     color: white;
 }
 
+input:focus {
+    outline: none; /* Убираем стандартную рамку браузера */
+    box-shadow: 0 0 5px rgba(0, 119, 255, 0.5); /* Добавляем красивую тень */
+}
+
 button {
     padding: 12px 20px;
     border: none;
@@ -97,28 +103,120 @@ button {
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Небольшая тень для объема */
 }
 
 button:hover {
     background-color: #005aa5;
+    transform: scale(1.02); /* Легкое увеличение при наведении */
 }
 
-/* Оптимизированная анимация */
-@keyframes move-twink-back {
-    0%, 100% { background-position: 0 0; }
-    33% { background-position: -2500px 1250px; }
-    66% { background-position: -5000px 2500px; }
+/* Стилизуем кота */
+#cat-loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; /* Чтобы кот был поверх всех элементов */
 }
 
-@keyframes move-clouds {
-    0%, 100% { background-position: 0 0; }
-    50% { background-position: 5000px 0; }
+#cat-loader img {
+    width: 150px; /* Размер кота */
 }
 
-/* Улучшенный контраст и размер текста */
-label, input, button {
-    font-size: 16px; /* Увеличенный шрифт */
-    color: #fff; /* Белый текст для лучшего контраста */
+/* Анимация вращения */
+.rotate {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+/* Стилистика уведомления */
+#notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: none; /* Изначально скрыто */
+}
+
+#notification span {
+    text-align: center;
+    display: block;
+}
+
+/* Модальное окно */
+.modal {
+    display: none; /* Изначально скрыто */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Темный фон */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 10px;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Стили для третьей страницы */
+#booking-details {
+    text-align: left;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+#booking-details strong {
+    color: #fff;
+}
+
+#close-confirmation {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Небольшая тень для объема */
+}
+
+#close-confirmation:hover {
+    background-color: #005aa5;
+    transform: scale(1.02); /* Легкое увеличение при наведении */
 }
 
 /* Медиа-запросы для мобильных устройств */
@@ -130,4 +228,78 @@ label, input, button {
     form {
         max-width: 90%; /* Сделать форму шире на малых экранах */
     }
+}
+
+/* Стили для комнаты */
+.room {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.room label {
+    margin-right: 10px;
+}
+
+.room input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.room .status {
+    font-weight: bold;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.room .occupied {
+    background-color: red;
+}
+
+.room .reserved {
+    background-color: orange;
+}
+
+.room .available {
+    background-color: green;
+}
+
+.rooms {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.rooms h4 {
+    margin-bottom: 10px;
+}
+/* Добавление стилей для третьей страницы */
+#booking-details {
+    text-align: left;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+#booking-details strong {
+    color: #fff;
+}
+
+#close-confirmation {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Небольшая тень для объема */
+}
+
+#close-confirmation:hover {
+    background-color: #005aa5;
+    transform: scale(1.02); /* Легкое увеличение при наведении */
 }

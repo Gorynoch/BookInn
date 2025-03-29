@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="clouds"></div>
+    <main>
+        <h1>Booking Confirmation</h1>
+        <section id="booking-details">
+            <h2>Your Booking Details</h2>
+            <p><strong>Check-in Date:</strong> <span id="checkin-date"></span></p>
+            <p><strong>Check-out Date:</strong> <span id="checkout-date"></span></p>
+            <p><strong>Selected Room:</strong> <span id="room-number"></span></p>
+            <p><strong>Booking ID:</strong> <span id="booking-id"></span></p>
+        </section>
+        <button id="close-confirmation">Close</button>
+    </main>
+
+    <script>
+        // Предполагаемые данные из LocalStorage (для демонстрации)
+        const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails'));
+
+        // Заполнение данных на странице
+        document.getElementById('checkin-date').innerText = bookingDetails.checkinDate;
+        document.getElementById('checkout-date').innerText = bookingDetails.checkoutDate;
+        document.getElementById('room-number').innerText = bookingDetails.roomNumber;
+        document.getElementById('booking-id').innerText = bookingDetails.bookingID;
+
+        // Закрытие страницы подтверждения
+        document.getElementById('close-confirmation').addEventListener('click', function() {
+            window.location.href = 'index.html'; // Переход на главную страницу
+        });
+    </script>
+</body>
+</html>
