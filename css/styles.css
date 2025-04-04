@@ -1,0 +1,213 @@
+/* Космосстиль */
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #050505, #000022);
+    animation: space 15s ease infinite;
+    color: #fff; /* Белый текст на темном фоне */
+}
+
+@keyframes space {
+    from {background-position: 0 0;}
+    to {background-position: -800px 0;} /* Уменьшили сдвиг для более плавного эффекта */
+}
+
+.stars, .twinkling, .clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.stars {
+    background: url("../img/starfield.png") repeat top center;
+    z-index: 0;
+}
+
+.twinkling{
+    background: transparent url("../img/twinkling.png") repeat top center;
+    z-index: 1;
+    animation: move-twink-back 200s linear infinite;
+}
+
+.clouds {
+    background: transparent url("../img/clouds.png") repeat top center;
+    z-index: 2;
+    animation: move-clouds 300s linear infinite;
+}
+
+@keyFrames move-twink-back {
+    from { background-position: 0 0; }
+    to { background-position: -6000px 3000px; } /* Аналогично уменьшен сдвиг */
+}
+
+@keyFrames move-clouds {
+    from { background-position: 0 0; }
+    to { background-position: 4000px 0; } /* Сдвиг для облаков тоже уменьшен */
+}
+
+main {
+    text-align: center;
+    position: relative;
+    z-index: 3;
+    padding-top: 25vh;
+}
+
+main h1 {
+    font-size: 48px;
+    text-shadow: 0 0 20px #fffa, 0 0 30px #ffff66, 0 0 40px #ff6600, 0 0 50px #ff0000, 0 0 60px #ff00ff, 0 0 70px #ff00ff, 0 0 80px #ff6600;
+}
+
+form {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.1); /* Немного увеличим прозрачность фона формы */
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 50px;
+    width: 656px; /* Ширина уменьшена на 193 пикселя */
+    height: 562px; /* Высота увеличена на 100 пикселей */
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+input {
+    box-sizing: border-box; /* Включаем учет границ и паддингов в общую ширину */
+    width: 100%; /* Полям вводам задаем 100% ширины относительно родителя */
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+input:focus {
+    outline: none; /* Убираем стандартную рамку браузера */
+    box-shadow: 0 0 5px rgba(0, 119, 255, 0.5); /* Добавляем красивую тень */
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Небольшая тень для объема */
+    margin-top: 8px; /* Отступ сверху от кнопки Book Now */
+}
+
+button:hover {
+    background-color: #005aa5;
+    transform: scale(1.02); /* Легкое увеличение при наведении */
+}
+
+/* Стилизуем кота */
+#cat-loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; /* Чтобы кот был поверх всех элементов */
+}
+
+#cat-loader img.animate-cat {
+    width: 150px; /* Размер кота */
+    animation: zoomAndShake 3s forwards; /* Добавляем анимацию */
+}
+
+/* Анимация приближения и поворота головы */
+@keyframes zoomAndShake {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        transform: scale(1.2) rotate(0deg);
+    }
+    75% {
+        transform: scale(1.2) rotate(-10deg);
+    }
+    85% {
+        transform: scale(1.2) rotate(10deg);
+    }
+    95% {
+        transform: scale(1.2) rotate(-10deg);
+    }
+    100% {
+        transform: scale(1.2) rotate(0deg);
+    }
+}
+
+/* Стилистика уведомления */
+#notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: none; /* Изначально скрыто */
+}
+
+#notification span {
+    text-align: center;
+    display: block;
+}
+
+/* Медиа-запросы для мобильных устройств */
+@media screen and (max-width: 768px) {
+    main {
+        padding-top: 15vh; /* Уменьшить отступ сверху */
+    }
+
+    form {
+        max-width: 90%; /* Сделать форму шире на малых экранах */
+    }
+}
+
+/* Кнопки комнат */
+.room-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Размещаем 4 кнопки в ряду */
+    gap: 10px; /* Пробел между кнопками */
+    margin-top: 20px;
+}
+
+.floor-label {
+    grid-column: 1 / -1; /* Размещаем метку этажа на всю ширину сетки */
+    text-align: left; /* Выравниваем текст по левому краю */
+    margin-bottom: 10px;
+}
+
+.room-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(45deg, #002aff, #004dff); /* Космический градиент */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.room-btn.selected {
+    background: linear-gradient(45deg, #ff0062, #ff4d94); /* Альтернативный космический градиент */
+    color: white; /* Оставляем белый текст для лучшей видимости */
+}
+
+.room-btn:hover {
+    filter: brightness(110%); /* Ярче при наведении */
+}

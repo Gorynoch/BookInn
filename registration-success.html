@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Success</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="clouds"></div>
+    <main>
+        <h1>Choose Your Stay</h1>
+        <form id="bookingForm">
+            <label for="checkin-date">Check-in Date:</label>
+            <input type="date" id="checkin-date" name="checkin-date" required>
+
+            <label for="checkout-date">Check-out Date:</label>
+            <input type="date" id="checkout-date" name="checkout-date" required>
+
+            <div id="room-status">
+                <h3>Room Status</h3>
+                <div class="room-buttons">
+                    <span class="floor-label">First Floor</span>
+                    <button class="room-btn" data-room="1">1</button>
+                    <button class="room-btn" data-room="2">2</button>
+                    <button class="room-btn" data-room="3">3</button>
+                    <button class="room-btn" data-room="4">4</button>
+                    <button class="room-btn" data-room="5">5</button>
+                    <button class="room-btn" data-room="6">6</button>
+                    <button class="room-btn" data-room="7">7</button>
+                    <button class="room-btn" data-room="8">8</button>
+
+                    <span class="floor-label">Second Floor</span>
+                    <button class="room-btn" data-room="9">9</button>
+                    <button class="room-btn" data-room="10">10</button>
+                    <button class="room-btn" data-room="11">11</button>
+                    <button class="room-btn" data-room="12">12</button>
+                    <button class="room-btn" data-room="13">13</button>
+                    <button class="room-btn" data-room="14">14</button>
+                    <button class="room-btn" data-room="15">15</button>
+                    <button class="room-btn" data-room="16">16</button>
+                </div>
+            </div>
+
+            <button type="submit">Book Now</button>
+        </form>
+    </main>
+
+    <!-- Всплывающее уведомление -->
+    <div id="notification">
+        <span>Registration Successful!<br>Thank you for registering. We'll be in touch shortly.</span>
+    </div>
+
+    <script>
+        window.onload = function() {
+            // Показываем уведомление
+            var notification = document.getElementById("notification");
+            notification.style.display = "block";
+
+            // Скрываем уведомление через 5 секунд
+            setTimeout(function() {
+                notification.style.display = "none";
+            }, 5000);
+        };
+
+        // Обработчик для кнопок комнат
+        document.querySelectorAll('.room-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.classList.toggle('selected');
+            });
+        });
+    </script>
+</body>
+</html>
